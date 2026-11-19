@@ -1,0 +1,8 @@
+# Universal Furniture Industries (UFI) - robots.txt
+# Allows all crawlers to access the full site
+# Sitemap location
+
+User-agent: *
+Allow: /
+
+Sitemap: http://localhost:3002/sitemap.xml

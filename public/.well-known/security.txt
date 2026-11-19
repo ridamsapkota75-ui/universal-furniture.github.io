@@ -1,0 +1,10 @@
+# Security.txt for Universal Furniture Industries (UFI)
+# RFC 9116 - Vulnerability Disclosure Contact
+
+Contact: mailto:security@ufichitwan.com
+Contact: tel:+977-9855053857
+Preferred-Languages: en, ne
+Policy: https://ufichitwan.com/security-policy
+Acknowledgments: https://ufichitwan.com/hall-of-fame
+Expires: 2025-11-18T00:00:00.000Z
+Canonical: https://ufichitwan.com/.well-known/security.txt

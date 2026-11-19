@@ -1,0 +1,25 @@
+with open("pages/products/[category]/index.tsx", "r") as f:
+    content = f.read()
+
+old = """                <Product3DViewer
+                  slug={categoryInfo.featuredProduct}
+                  category={categoryInfo.slug}
+                  autoRotate={true}
+                  className="viewer-canvas"
+                />"""
+
+new = """                <Suspense fallback={<div className="viewer-canvas bg-industrial-deep rounded-card-xl flex items-center justify-center border border-electricBlue/15"><div className="flex flex-col items-center space-y-2"><div className="w-8 h-8 border-2 border-electricBlue border-t-transparent rounded-full animate-spin"></div><span className="text-caption font-mono uppercase tracking-wider text-metallicSilver/70">Loading 3D Studio...</span></div></div>}>
+                  <Product3DViewer
+                    slug={categoryInfo.featuredProduct}
+                    category={categoryInfo.slug}
+                    autoRotate={true}
+                    className="viewer-canvas"
+                  />
+                </Suspense>"""
+
+content = content.replace(old, new)
+
+with open("pages/products/[category]/index.tsx", "w") as f:
+    f.write(content)
+
+print("Fixed!")

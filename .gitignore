@@ -3,3 +3,6 @@ node_modules
 out
 .env*
 *.tsbuildinfo
+__pycache__/
+*.py[cod]
+audit_temp.json

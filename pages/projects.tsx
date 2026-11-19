@@ -76,59 +76,56 @@ export default function ProjectsPage() {
 
       <NavBar />
 
-      <main className="min-h-screen bg-deepNavy text-steelWhite pt-24 sm:pt-28">
+      <main className="min-h-screen bg-industrial-base text-steelWhite pt-24 sm:pt-28">
         {/* Hero Section */}
-        <section className="relative py-16 sm:py-24 border-b border-electricBlue/20 overflow-hidden">
-          <div className="absolute inset-0">
+        <section className="relative section-padding border-b border-electricBlue/15 overflow-hidden">
+          <div className="absolute inset-0 z-0 overlay-blue">
             <Image
               src="/images/backgrounds/factory-interior.jpg"
               alt="Industrial furniture manufacturing"
               fill
-              className="object-cover opacity-25"
+              className="object-cover opacity-15"
               sizes="100vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-deepNavy/60 via-deepNavy/80 to-deepNavy pointer-events-none" />
           </div>
-          <div className="relative max-w-5xl mx-auto px-4 text-center">
-            <span className="inline-block px-3.5 py-1.5 rounded-full bg-electricBlue/20 border border-electricBlue/40 text-electricBlue font-mono text-xs font-semibold uppercase tracking-widest mb-4">
-              COMMERCIAL &amp; INSTITUTIONAL SECTORS
-            </span>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
-              MADE FOR THE SPACES THAT MATTER.
-            </h1>
-            <p className="mt-4 text-lg sm:text-xl text-metallicSilver max-w-2xl mx-auto leading-relaxed">
-              One manufacturing standard, five specialized sectors — proven across thousands of institutions throughout Nepal since 1990.
-            </p>
+          <div className="relative z-10 section-container">
+            <div className="max-w-5xl mx-auto text-center">
+              <span className="text-label">COMMERCIAL & INSTITUTIONAL SECTORS</span>
+              <h1 className="heading-display mt-2 text-balance">
+                MADE FOR THE SPACES THAT MATTER.
+              </h1>
+              <p className="text-body-premium mt-4 max-w-2xl mx-auto">
+                One manufacturing standard, five specialized sectors — proven across thousands of institutions throughout Nepal since 1990.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* Sectors Grid / Editorial Showcase */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-20">
+        <section className="section-padding section-container space-y-16">
           {projectSectors.map((sector, idx) => (
             <div
               key={sector.category}
-              className={`relative flex flex-col ${
-                idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'
-              } items-center gap-12 bg-darkBlue/40 border border-electricBlue/20 hover:border-electricBlue/40 p-8 sm:p-12 rounded-3xl transition duration-300 shadow-xl overflow-hidden`}
+              className={`relative flex flex-col ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 lg:gap-12 card-strong card-strong-hover p-8 sm:p-10 overflow-hidden`}
             >
               {/* Sector Background */}
-              <div className="absolute inset-0 z-0 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 z-0 rounded-card-xl overflow-hidden overlay-gradient">
                 <Image
                   src={sector.bgImage}
                   alt={sector.title}
                   fill
-                  className="object-cover opacity-15"
+                  className="object-cover opacity-12"
                   sizes="100vw"
                 />
               </div>
 
               {/* Product Visual Presentation */}
-              <div className="relative z-10 w-full lg:w-1/2 flex items-center justify-center bg-deepNavy/80 border border-electricBlue/25 rounded-2xl p-8 overflow-hidden group">
-                <div className="absolute top-3 left-4 text-[10px] font-mono uppercase text-electricBlue tracking-wider">
+              <div className="relative z-10 w-full lg:w-1/2 flex items-center justify-center bg-deepNavy/60 border border-electricBlue/15 rounded-card-xl p-6 overflow-hidden group">
+                <div className="absolute top-3 left-4 text-caption font-mono uppercase text-electricBlue tracking-wider">
                   SECTOR REF: 0{idx + 1}
                 </div>
-                <div className="relative w-full h-64 sm:h-80 flex items-center justify-center">
+                <div className="relative w-full h-56 sm:h-72 flex items-center justify-center">
                   <Image
                     src={sector.image}
                     alt={sector.title}
@@ -140,39 +137,39 @@ export default function ProjectsPage() {
 
               {/* Sector Content */}
               <div className="relative z-10 w-full lg:w-1/2 space-y-4">
-                <div className="inline-block px-3 py-1 rounded bg-deepNavy border border-electricBlue/30 text-electricBlue text-xs font-mono font-semibold uppercase">
+                <div className="inline-block px-3 py-1 rounded-lg bg-industrial-card border border-electricBlue/20 text-electricBlue text-caption font-mono font-semibold uppercase">
                   {sector.category}
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-steelWhite">
+                <h2 className="heading-section text-2xl sm:text-3xl lg:text-4xl">
                   {sector.title}
                 </h2>
-                <h3 className="text-sm sm:text-base font-semibold text-iceBlue">
+                <h3 className="heading-md text-sm sm:text-base font-semibold text-iceBlue">
                   {sector.headline}
                 </h3>
-                <p className="text-sm sm:text-base text-metallicSilver leading-relaxed">
+                <p className="text-body-premium">
                   {sector.description}
                 </p>
 
                 {/* Key Sector Highlights */}
                 <ul className="space-y-2 pt-2">
                   {sector.highlights.map((h, i) => (
-                    <li key={i} className="flex items-center space-x-2 text-xs sm:text-sm text-metallicSilver/90 font-mono">
+                    <li key={i} className="flex items-center space-x-2 text-body-sm text-metallicSilver/90 font-mono">
                       <span className="w-1.5 h-1.5 rounded-full bg-electricBlue" />
                       <span>{h}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="pt-4 flex items-center space-x-4">
+                <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
                   <Link
                     href={sector.link}
-                    className="px-6 py-2.5 rounded-xl bg-electricBlue hover:bg-royalBlue text-white text-xs font-semibold tracking-wider uppercase transition shadow-md"
+                    className="w-full sm:w-auto btn-primary-sm text-center"
                   >
                     Explore {sector.category}
                   </Link>
                   <Link
                     href="/contact"
-                    className="px-6 py-2.5 rounded-xl bg-deepNavy border border-electricBlue/30 hover:border-electricBlue text-iceBlue text-xs font-semibold tracking-wider uppercase transition"
+                    className="w-full sm:w-auto btn-secondary-sm text-center"
                   >
                     Inquire for Sector
                   </Link>
@@ -182,8 +179,8 @@ export default function ProjectsPage() {
           ))}
 
           {/* Bottom Note on Verification */}
-          <div className="text-center bg-deepNavy/80 border border-electricBlue/20 rounded-2xl p-6 max-w-3xl mx-auto">
-            <p className="text-xs font-mono text-metallicSilver/70">
+          <div className="text-center card-base p-6 max-w-3xl mx-auto border-electricBlue/15">
+            <p className="text-caption font-mono text-metallicSilver/60">
               UFI manufactures to customer-specified dimensional floor plans. All photos represent actual production lines manufactured at our Bharatpur, Chitwan plant.
             </p>
           </div>

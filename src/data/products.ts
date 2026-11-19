@@ -127,6 +127,42 @@ export const products: Product[] = [
     },
     images: ['/images/store/two-door-storage-cabinet.png'],
   },
+  {
+    slug: 'gondola-endcap-shelf',
+    name: 'Single-Sided Wall Display Rack',
+    category: 'store',
+    categoryTitle: 'Retail Systems',
+    tagline: 'High-Impact End-of-Aisle Retail Display',
+    description:
+      'Maximize aisle-end real estate with a heavy-duty single-sided wall display rack. Built from cold-rolled slotted steel uprights and finished in our signature 9-step electrostatic powder coating for maximum scuff resistance in high-traffic retail environments.',
+    featured: false,
+    specs: {
+      'Shelving Capacity': '4 shelves per endcap (uniformly distributed)',
+      'Structure': 'Slotted heavy-gauge steel uprights with center panel',
+      'Finish': '9-step industrial electrostatic powder coating',
+      'Configurability': 'Adjustable shelf heights and modular bay extensions',
+      'Standard Colorway': 'Industrial Signal Blue uprights & Pure White shelves',
+    },
+    images: ['/images/store/gondola-endcap-shelf.png'],
+  },
+  {
+    slug: 'hexagonal-endcap-shelf',
+    name: 'Round Show Shelf',
+    category: 'store',
+    categoryTitle: 'Retail Systems',
+    tagline: 'Premium Geometric Aisle-End Display Unit',
+    description:
+      'A distinctive round show shelf engineered for premium retail zones and brand-highlight bays. The curved geometric tiers draw shopper attention while the welded steel frame and 9-step powder coating deliver commercial-grade durability.',
+    featured: false,
+    specs: {
+      'Shelving Capacity': '4 shelves per unit (uniformly distributed)',
+      'Geometry': 'Hexagonal welded steel frame with center panel',
+      'Finish': '9-step industrial electrostatic powder coating',
+      'Configurability': 'Adjustable shelf heights and modular bay extensions',
+      'Standard Colorway': 'Industrial Signal Blue uprights & Pure White shelves',
+    },
+    images: ['/images/store/hexagonal-endcap-shelf.png'],
+  },
 
   // ----------------- SCHOOL & INSTITUTIONAL -----------------
   {
@@ -183,6 +219,57 @@ export const products: Product[] = [
       'Finish': 'Industrial metallic silver / light grey powder coat',
     },
     images: ['/images/school/steel-storage-locker.png'],
+  },
+  {
+    slug: 'overbed-table',
+    name: 'Hospital Over-Bed Table',
+    category: 'hospital',
+    categoryTitle: 'Healthcare Systems',
+    tagline: 'Adjustable Mobile Bedside Utility Table',
+    description:
+      'Engineered for patient rooms and intensive care units. Features a height-adjustable, tilting top surface on a lightweight welded steel frame with smooth-rolling casters, designed to slide easily over patient beds for meals, tablets, and clinical supplies.',
+    featured: false,
+    specs: {
+      'Top Surface': 'Adjustable height and tilt angle with safety edge lip',
+      'Frame': 'Welded tubular steel with medical-grade chemical passivation',
+      'Mobility': '4x lightweight silent swivel casters with directional locks',
+      'Finish': '9-step electrostatic powder coat in clinical white',
+    },
+    images: ['/images/hospital/overbed-table.png'],
+  },
+  {
+    slug: 'medical-treatment-trolley',
+    name: 'Medical Treatment Trolley',
+    category: 'hospital',
+    categoryTitle: 'Healthcare Systems',
+    tagline: 'Multi-Tier Mobile Procedure & Instrument Cart',
+    description:
+      'A compact multi-tier mobile trolley built for treatment rooms, clinics, and surgical prep zones. Deep pressed-steel trays with three-sided safety guard rails keep instruments secure, while the welded steel frame and chemical passivation ensure clinical-grade hygiene.',
+    featured: false,
+    specs: {
+      'Trays': 'Two-tier pressed steel sheets with rim lips and guard rails',
+      'Frame': 'Seamless tubular steel handle rails with mirror polish',
+      'Wheels': '100mm silent swivel casters (2 with directional locks)',
+      'Finish': 'Chemical passivation ahead of medical antimicrobial finish',
+    },
+    images: ['/images/hospital/medical-treatment-trolley.png'],
+  },
+  {
+    slug: 'medical-screen',
+    name: 'Medical Screen',
+    category: 'hospital',
+    categoryTitle: 'Healthcare Systems',
+    tagline: 'Privacy Partition Screen for Clinical Zones',
+    description:
+      'A freestanding privacy screen engineered for patient bays, triage zones, and examination rooms. Features a lightweight welded steel frame with a durable, easy-disinfect panel and stable foot glides for quick repositioning between clinical workflows.',
+    featured: false,
+    specs: {
+      'Frame': 'Welded tubular steel with medical-grade chemical passivation',
+      'Panel': 'Easy-clean, antimicrobial-compatible privacy panel',
+      'Mobility': 'Stable foot glides with integrated carry handles',
+      'Finish': '9-step electrostatic powder coat in clinical white',
+    },
+    images: ['/images/hospital/medical-screen.png'],
   },
 
   // ----------------- HOSPITAL & HEALTHCARE -----------------
@@ -244,6 +331,74 @@ export const products: Product[] = [
 
   // ----------------- OFFICE & WORKSPACE -----------------
   {
+    slug: 'executive-office-chair',
+    name: 'Executive Office Chair',
+    category: 'office',
+    categoryTitle: 'Workspace Systems',
+    tagline: 'Premium Ergonomic High-Back Task Chair',
+    description:
+      'Engineered for executive workspaces and long-duration corporate use. Features a high-back ergonomic design with breathable mesh upholstery, adjustable lumbar support, a height-adjustable headrest, and a chrome-plated steel 5-star swivel base with smooth-rolling casters.',
+    featured: false,
+    specs: {
+      'Backrest': 'Breathable high-tensile polyester mesh with lumbar curve',
+      'Mechanism': 'Tilt-lock synchro mechanism with tension knob',
+      'Gas Lift': 'Class 4 heavy-duty pneumatic height cylinder',
+      'Base': '350mm chrome-plated steel 5-star base with nylon castors',
+    },
+    images: ['/images/office/executive-office-chair.png'],
+  },
+  {
+    slug: 'steel-file-cabinet',
+    name: 'Glass-Door Steel Cabinet',
+    category: 'office',
+    categoryTitle: 'Workspace Systems',
+    tagline: 'Reinforced Display & Document Archive Unit',
+    description:
+      'A reinforced steel cabinet engineered for corporate document archives and display zones. Features glass-view upper doors and solid lower storage, built from cold-rolled mild steel and finished with our signature 9-step electrostatic powder coat.',
+    featured: false,
+    specs: {
+      'Drawers': '3 lockable drawers on ball-bearing slide runners',
+      'Construction': 'Cold-rolled mild steel sheet 0.8mm - 1.2mm',
+      'Locking': 'Central key lock with full-width drawer engagement',
+      'Finish': '9-step industrial electrostatic powder coating',
+    },
+    images: ['/images/office/steel-file-cabinet.png'],
+  },
+  {
+    slug: 'steel-wardrobe-cabinet',
+    name: 'Steel Wardrobe Cabinet',
+    category: 'office',
+    categoryTitle: 'Workspace Systems',
+    tagline: 'Full-Height Personal Storage & Coat Almirah',
+    description:
+      'A full-height welded steel wardrobe designed for corporate cloakrooms, changing facilities, and personal storage. Features double reinforced doors, a three-point locking mechanism, and an internal hanging rail, all finished in durable electrostatic powder coat.',
+    featured: false,
+    specs: {
+      'Doors': 'Double reinforced hinged doors with three-point cam lock',
+      'Internal': 'Full-width steel hanging rail and garment hooks',
+      'Construction': 'Cold-rolled mild steel sheet 0.8mm - 1.2mm',
+      'Corrosion Protection': 'Phosphated and electrostatic powder coated',
+    },
+    images: ['/images/office/steel-wardrobe-cabinet.png'],
+  },
+  {
+    slug: 'three-drawer-file-cabinet',
+    name: '3-Drawer Filing Cabinet',
+    category: 'office',
+    categoryTitle: 'Workspace Systems',
+    tagline: 'Lockable Lateral Document Storage Unit',
+    description:
+      'A lateral three-drawer filing cabinet engineered for high-volume document archiving in corporate offices, legal departments, and audit teams. Built from heavy-gauge cold-rolled steel with ball-bearing drawer slides and a central gang lock for full security.',
+    featured: false,
+    specs: {
+      'Drawers': '3 lockable lateral drawers on ball-bearing slide runners',
+      'Construction': 'Cold-rolled mild steel sheet 0.8mm - 1.2mm',
+      'Locking': 'Central gang lock with full-width drawer engagement',
+      'Finish': '9-step industrial electrostatic powder coating',
+    },
+    images: ['/images/office/three-drawer-file-cabinet.png'],
+  },
+  {
     slug: 'executive-office-desk',
     name: 'Executive Office Desk',
     category: 'office',
@@ -299,6 +454,23 @@ export const products: Product[] = [
   },
 
   // ----------------- HOME & LIVING -----------------
+  {
+    slug: 'metal-dining-table-set',
+    name: 'Metal Dining Table Set',
+    category: 'home',
+    categoryTitle: 'Home Collection',
+    tagline: 'Complete Industrial Steel Dining Suite',
+    description:
+      'A complete industrial dining suite pairing a heavy-duty trapezoidal steel-legged table with matching metal chairs. The precision-welded steel frame and signature 9-step powder coating bring the same durability trusted by hospitals into modern residential dining spaces.',
+    featured: false,
+    specs: {
+      'Base': 'Trapezoid welded steel box-section with matte powder coat',
+      'Top': 'Solid engineered wood with waterproof edging',
+      'Seating': 'Comfortably seats 6 adults with matching chairs',
+      'Finish': '9-step industrial electrostatic powder coating',
+    },
+    images: ['/images/home/metal-dining-table-set.png'],
+  },
   {
     slug: 'metal-sofa-set',
     name: 'Architectural Metal Sofa Set',

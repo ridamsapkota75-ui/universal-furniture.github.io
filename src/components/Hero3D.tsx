@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect, Suspense } from 'react';
+import React, { useRef, useState, useEffect, Suspense, lazy } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment, ContactShadows } from '@react-three/drei';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as THREE from 'three';
-import { GondolaRack3D } from './DetailedFurniture3D';
+const GondolaRack3D = lazy(() => import('./DetailedFurniture3D'));
 
 function InteractiveScene({ mouseX, mouseY }: { mouseX: number; mouseY: number }) {
   const groupRef = useRef<THREE.Group>(null);
@@ -42,9 +42,9 @@ export default function Hero3D() {
   }, []);
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-deepNavy via-darkBlue to-deepNavy">
+    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-industrial-base">
       {/* Cinematic Factory Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overlay-dark">
         <Image
           src="/images/backgrounds/hero-factory.jpg"
           alt="UFI Manufacturing Facility"
@@ -54,15 +54,14 @@ export default function Hero3D() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-deepNavy/70 via-deepNavy/80 to-deepNavy/95" />
       </div>
 
       {/* Background Architectural Blueprint / Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0b234418_1px,transparent_1px),linear-gradient(to_bottom,#0b234418_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-subtle [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
       {/* Atmospheric Radial Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-electricBlue/15 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 left-1/4 w-[400px] h-[300px] bg-royalBlue/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-electricBlue/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-[400px] h-[300px] bg-royalBlue/15 rounded-full blur-[100px] pointer-events-none" />
 
       {/* 3D Canvas Layer */}
       <div className="absolute inset-0 z-0">
@@ -81,7 +80,10 @@ export default function Hero3D() {
             <Suspense fallback={null}>
               <InteractiveScene mouseX={mousePos.x} mouseY={mousePos.y} />
               <ContactShadows position={[0, -0.85, 0]} opacity={0.7} scale={6} blur={2.2} far={4} color="#030812" />
-              <Environment preset="city" />
+              <Environment
+                files={['/hdri/potsdamer_platz_1k.hdr']}
+                path=""
+              />
             </Suspense>
 
             <OrbitControls
@@ -95,46 +97,46 @@ export default function Hero3D() {
       </div>
 
       {/* Hero Content Overlay (Glass-morphism text container) */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center text-center pointer-events-none">
+      <div className="relative z-10 section-container px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center text-center pointer-events-none">
         {/* Brand Badge */}
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-darkBlue/80 border border-electricBlue/40 backdrop-blur-md mb-6 pointer-events-auto shadow-lg">
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-darkBlue/80 border border-electricBlue/40 backdrop-blur-md mb-6 pointer-events-auto shadow-lg animate-fade-in-up">
           <span className="w-2 h-2 rounded-full bg-electricBlue animate-pulse" />
-          <span className="text-xs font-mono tracking-widest uppercase text-iceBlue font-medium">
+          <span className="text-caption font-mono tracking-widest uppercase text-iceBlue font-medium">
             UNIVERSAL FURNITURE INDUSTRIES | EST. 1990
           </span>
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-steelWhite tracking-tight max-w-5xl leading-[1.08] drop-shadow-md">
+        <h1 className="heading-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl leading-[1.08] drop-shadow-md animate-fade-in-up delay-100 text-balance">
           ENGINEERED FOR<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-iceBlue via-electricBlue to-metallicSilver">
+          <span className="text-gradient-electric">
             EVERY SPACE.
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-6 text-base sm:text-xl text-metallicSilver/90 max-w-2xl leading-relaxed">
+        <p className="mt-6 text-body sm:text-body-lg text-metallicSilver/90 max-w-2xl leading-relaxed animate-fade-in-up delay-200">
           Precision-manufactured metal furniture for businesses, institutions, and modern living. Trusted since 1990 in Chitwan, Nepal.
         </p>
 
         {/* CTA Actions */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 pointer-events-auto">
+        <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 pointer-events-auto animate-fade-in-up delay-300">
           <Link
             href="/#collections"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-electricBlue hover:bg-royalBlue text-white font-semibold text-sm tracking-wide shadow-lg shadow-electricBlue/25 hover:shadow-electricBlue/40 transition duration-300 transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto btn-primary"
           >
             EXPLORE OUR PRODUCTS
           </Link>
           <Link
             href="/contact"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-deepNavy/80 hover:bg-darkBlue text-iceBlue border border-electricBlue/40 font-medium text-sm tracking-wide backdrop-blur-sm transition duration-300"
+            className="w-full sm:w-auto btn-secondary"
           >
             REQUEST A QUOTE
           </Link>
         </div>
 
         {/* Small 3D Interaction Hint */}
-        <div className="mt-12 text-xs font-mono text-metallicSilver/60 flex items-center space-x-2">
+        <div className="mt-12 text-caption font-mono text-metallicSilver/50 flex items-center space-x-2 animate-fade-in-up delay-400">
           <span>PRECISION 3D MODEL: DOUBLE-SIDED GONDOLA RACK</span>
           <span>•</span>
           <span>MOVE CURSOR TO ROTATE</span>

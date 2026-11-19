@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import NavBar from '../../../src/components/NavBar';
 import Footer from '../../../src/components/Footer';
-import Product3DViewer from '../../../src/components/Product3DViewer';
 import { products, Product, CATEGORIES } from '../../../src/data/products';
 
 interface Props {
@@ -14,7 +13,6 @@ interface Props {
 }
 
 export default function ProductDetailPage({ product, relatedProducts }: Props) {
-  const [viewMode, setViewMode] = useState<'3d' | 'photo'>('3d');
   const [selectedTier, setSelectedTier] = useState<string>(product.options?.tiers?.[0] || '');
   const [selectedFinish, setSelectedFinish] = useState<string>(product.options?.finishes?.[0] || '');
   const [selectedSize, setSelectedSize] = useState<string>(product.options?.sizes?.[0] || '');
@@ -32,15 +30,15 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
 
       <NavBar />
 
-      <main className="min-h-screen bg-deepNavy text-steelWhite pt-24 sm:pt-28 pb-20">
+      <main className="min-h-screen bg-industrial-base text-steelWhite pt-24 sm:pt-28 pb-20">
         {/* Breadcrumbs */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center space-x-2 text-xs font-mono text-metallicSilver/70">
-            <Link href="/" className="hover:text-iceBlue">
+        <div className="section-container py-4">
+          <nav className="flex items-center space-x-2 text-caption font-mono text-metallicSilver/60">
+            <Link href="/" className="hover:text-iceBlue transition">
               Home
             </Link>
             <span>/</span>
-            <Link href={`/products/${product.category}`} className="hover:text-iceBlue">
+            <Link href={`/products/${product.category}`} className="hover:text-iceBlue transition">
               {product.categoryTitle}
             </Link>
             <span>/</span>
@@ -51,94 +49,71 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
         </div>
 
         {/* Product Showcase Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid lg:grid-cols-12 gap-10 items-start">
-            {/* Left Column: Interactive 3D / Real Product Photo Viewport */}
+        <section className="section-padding section-container">
+          <div className="grid lg:grid-cols-12 gap-8 items-start">
+            {/* Left Column: Product Photo Viewport */}
             <div className="lg:col-span-7 space-y-4">
-              {/* View Switcher Controls */}
-              <div className="flex items-center justify-between bg-darkBlue/80 border border-electricBlue/20 rounded-2xl p-2">
-                <div className="flex items-center space-x-2">
-                  <button
-                    type="button"
-                    onClick={() => setViewMode('3d')}
-                    className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition ${
-                      viewMode === '3d'
-                        ? 'bg-electricBlue text-white shadow-md'
-                        : 'text-metallicSilver hover:text-iceBlue hover:bg-deepNavy'
-                    }`}
-                  >
-                    Interactive 3D View
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setViewMode('photo')}
-                    className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition ${
-                      viewMode === 'photo'
-                        ? 'bg-electricBlue text-white shadow-md'
-                        : 'text-metallicSilver hover:text-iceBlue hover:bg-deepNavy'
-                    }`}
-                  >
-                    Reference Photo
-                  </button>
-                </div>
-                <span className="text-[11px] font-mono text-metallicSilver/60 hidden sm:inline-block pr-2">
-                  Manufactured in Chitwan
-                </span>
-              </div>
+              {/* Manufactured in Chitwan */}
+              <span className="text-caption font-mono text-metallicSilver/50 hidden sm:inline-block pr-2">
+                Manufactured in Chitwan
+              </span>
 
-              {/* Viewport Display */}
+              {/* Product Photo Display */}
               <div className="relative">
-                {viewMode === '3d' ? (
-                  <Product3DViewer
-                    slug={product.slug}
-                    category={product.category}
-                    autoRotate={true}
-                    className="w-full h-[400px] sm:h-[480px]"
-                  />
-                ) : (
-                  <div className="relative w-full h-[400px] sm:h-[480px] bg-darkBlue/60 border border-electricBlue/30 rounded-2xl flex items-center justify-center p-8 overflow-hidden shadow-2xl">
+                {product.images && product.images.length > 0 ? (
+                  <div className="viewer-container viewer-container-lg">
                     <Image
                       src={product.images[0]}
                       alt={product.name}
                       fill
                       className="object-contain p-6"
                       priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
+                  </div>
+                ) : (
+                  <div className="viewer-container viewer-container-lg bg-industrial-deep rounded-card-xl flex items-center justify-center border border-electricBlue/15">
+                    <div className="text-center p-6">
+                      <div className="w-16 h-16 bg-deepNavy/60 rounded-full flex items-center justify-center mx-auto mb-3 border border-electricBlue/20">
+                        <span className="text-caption font-mono text-metallicSilver/50 text-2xl" aria-hidden="true">!</span>
+                      </div>
+                      <p className="text-caption font-mono text-metallicSilver/60">{product.name}</p>
+                    </div>
                   </div>
                 )}
               </div>
 
-              <div className="flex items-center justify-between text-xs font-mono text-metallicSilver/70 px-2">
+              <div className="flex items-center justify-between text-caption font-mono text-metallicSilver/60 px-2">
                 <span>9-Step Chemical Powder Coated Steel</span>
                 <span>Chitwan Factory Direct</span>
               </div>
             </div>
 
             {/* Right Column: Product Information & Quotation Configurator */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="bg-darkBlue/70 border border-electricBlue/30 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+            <div className="lg:col-span-5 space-y-5">
+              <div className="card-strong p-6 sm:p-8 space-y-5">
                 <div>
-                  <div className="inline-block px-3 py-1 rounded bg-deepNavy border border-electricBlue/30 text-electricBlue text-xs font-mono font-semibold uppercase mb-2">
+                  <div className="inline-block px-3 py-1 rounded-lg bg-industrial-card border border-electricBlue/20 text-electricBlue text-caption font-mono font-semibold uppercase mb-2">
                     {product.categoryTitle}
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-steelWhite">
+                  <h1 className="heading-section text-2xl sm:text-3xl font-extrabold text-steelWhite">
                     {product.name}
                   </h1>
-                  <p className="text-xs font-mono text-iceBlue mt-1 uppercase tracking-wide">
+                  <p className="heading-md text-sm text-iceBlue mt-1">
                     {product.tagline}
                   </p>
                 </div>
 
-                <p className="text-sm text-metallicSilver leading-relaxed">
+                <p className="text-body-premium">
                   {product.description}
                 </p>
 
                 {/* Optional Configuration Selectors (Tier, Finish, Size) */}
                 {product.options && (
-                  <div className="space-y-4 pt-2 border-t border-electricBlue/15">
+                  <div className="space-y-4 pt-2 border-t border-electricBlue/10">
                     {product.options.tiers && (
                       <div>
-                        <label className="block text-xs font-mono uppercase text-metallicSilver mb-2">
+                        <label className="form-label">
                           Tier Configuration
                         </label>
                         <div className="grid grid-cols-2 gap-2">
@@ -147,10 +122,10 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
                               key={t}
                               type="button"
                               onClick={() => setSelectedTier(t)}
-                              className={`px-3 py-2 rounded-xl text-xs font-mono text-left transition border ${
+                              className={`px-3 py-2 rounded-xl text-caption font-mono text-left transition border ${
                                 selectedTier === t
-                                  ? 'bg-electricBlue text-white border-electricBlue font-bold shadow'
-                                  : 'bg-deepNavy/80 text-metallicSilver border-electricBlue/20 hover:border-electricBlue/50'
+                                  ? 'bg-electricBlue text-white border-electricBlue font-bold shadow-md'
+                                  : 'bg-deepNavy/80 text-metallicSilver border-electricBlue/15 hover:border-electricBlue/40'
                               }`}
                             >
                               {t}
@@ -162,7 +137,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
 
                     {product.options.finishes && (
                       <div>
-                        <label className="block text-xs font-mono uppercase text-metallicSilver mb-2">
+                        <label className="form-label">
                           Electrostatic Finish
                         </label>
                         <div className="space-y-1.5">
@@ -171,10 +146,10 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
                               key={f}
                               type="button"
                               onClick={() => setSelectedFinish(f)}
-                              className={`w-full px-3 py-2 rounded-xl text-xs font-mono text-left transition border ${
+                              className={`w-full px-3 py-2 rounded-xl text-caption font-mono text-left transition border ${
                                 selectedFinish === f
-                                  ? 'bg-electricBlue text-white border-electricBlue font-bold shadow'
-                                  : 'bg-deepNavy/80 text-metallicSilver border-electricBlue/20 hover:border-electricBlue/50'
+                                  ? 'bg-electricBlue text-white border-electricBlue font-bold shadow-md'
+                                  : 'bg-deepNavy/80 text-metallicSilver border-electricBlue/15 hover:border-electricBlue/40'
                               }`}
                             >
                               {f}
@@ -186,7 +161,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
 
                     {product.options.sizes && (
                       <div>
-                        <label className="block text-xs font-mono uppercase text-metallicSilver mb-2">
+                        <label className="form-label">
                           Standard Dimensions
                         </label>
                         <div className="space-y-1.5">
@@ -195,10 +170,10 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
                               key={s}
                               type="button"
                               onClick={() => setSelectedSize(s)}
-                              className={`w-full px-3 py-2 rounded-xl text-xs font-mono text-left transition border ${
+                              className={`w-full px-3 py-2 rounded-xl text-caption font-mono text-left transition border ${
                                 selectedSize === s
-                                  ? 'bg-electricBlue text-white border-electricBlue font-bold shadow'
-                                  : 'bg-deepNavy/80 text-metallicSilver border-electricBlue/20 hover:border-electricBlue/50'
+                                  ? 'bg-electricBlue text-white border-electricBlue font-bold shadow-md'
+                                  : 'bg-deepNavy/80 text-metallicSilver border-electricBlue/15 hover:border-electricBlue/40'
                               }`}
                             >
                               {s}
@@ -211,10 +186,10 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
                 )}
 
                 {/* Primary CTA Buttons */}
-                <div className="space-y-3 pt-4 border-t border-electricBlue/15">
+                <div className="space-y-3 pt-4 border-t border-electricBlue/10">
                   <Link
                     href={`/contact?category=${product.category}&product=${product.slug}`}
-                    className="w-full block text-center py-3.5 rounded-xl bg-gradient-to-r from-electricBlue to-royalBlue hover:from-royalBlue hover:to-electricBlue text-white font-semibold text-xs font-mono tracking-wider uppercase transition shadow-xl shadow-electricBlue/30"
+                    className="w-full btn-primary text-center"
                   >
                     Request Official Price Quote
                   </Link>
@@ -223,13 +198,13 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
                     href={`https://wa.me/9779855053857?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl bg-green-700 hover:bg-green-600 text-white font-semibold text-xs font-mono tracking-wider uppercase transition shadow-md"
+                    className="w-full inline-flex items-center justify-center space-x-2 btn-secondary text-center"
                   >
                     <span>WhatsApp Factory Inquiry</span>
                   </a>
                 </div>
 
-                <div className="text-[11px] font-mono text-metallicSilver/60 text-center">
+                <div className="text-caption font-mono text-metallicSilver/50 text-center">
                   Factory delivery across all provinces of Nepal &bull; Phone: +977-9855053857
                 </div>
               </div>
@@ -238,9 +213,9 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
         </section>
 
         {/* Technical Specifications Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-          <div className="bg-darkBlue/60 border border-electricBlue/25 rounded-3xl p-6 sm:p-10 shadow-xl">
-            <h3 className="text-xl sm:text-2xl font-bold text-steelWhite mb-6 flex items-center space-x-3">
+        <section className="section-padding section-container">
+          <div className="card-strong p-6 sm:p-10">
+            <h3 className="heading-section text-xl sm:text-2xl font-bold text-steelWhite mb-6 flex items-center space-x-3">
               <span className="w-2.5 h-2.5 rounded-full bg-electricBlue" />
               <span>Technical Engineering Specifications</span>
             </h3>
@@ -249,12 +224,12 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
               {Object.entries(product.specs).map(([label, value]) => (
                 <div
                   key={label}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-deepNavy/80 border border-electricBlue/15"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-deepNavy/60 border border-electricBlue/10"
                 >
-                  <span className="text-xs font-mono text-metallicSilver/70 uppercase">
+                  <span className="text-caption font-mono text-metallicSilver/60 uppercase">
                     {label}
                   </span>
-                  <span className="text-sm font-mono text-iceBlue font-semibold mt-1 sm:mt-0">
+                  <span className="text-mono text-sm font-semibold text-iceBlue mt-1 sm:mt-0">
                     {value}
                   </span>
                 </div>
@@ -265,16 +240,16 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
 
         {/* Related Products in this Category */}
         {relatedProducts.length > 0 && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-            <div className="flex items-center justify-between mb-8 border-b border-electricBlue/20 pb-4">
-              <h3 className="text-xl sm:text-2xl font-bold text-steelWhite">
+          <section className="section-padding section-container">
+            <div className="flex items-center justify-between mb-8 border-b border-electricBlue/15 pb-4">
+              <h3 className="heading-section text-xl sm:text-2xl font-bold text-steelWhite">
                 Related {product.categoryTitle}
               </h3>
               <Link
                 href={`/products/${product.category}`}
-                className="text-xs font-mono text-electricBlue hover:underline"
+                className="text-caption font-mono text-electricBlue hover:underline"
               >
-                View Category Catalog →
+                View Category Catalog &rarr;
               </Link>
             </div>
 
@@ -283,21 +258,21 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
                 <Link
                   key={rel.slug}
                   href={`/products/${rel.category}/${rel.slug}`}
-                  className="group bg-darkBlue/50 hover:bg-darkBlue border border-electricBlue/20 hover:border-electricBlue/50 rounded-2xl p-5 transition duration-300 flex flex-col justify-between"
+                  className="group card-interactive flex flex-col justify-between p-6"
                 >
-                  <div className="relative h-48 w-full bg-deepNavy/60 rounded-xl mb-4 p-4 flex items-center justify-center">
+                  <div className="relative h-40 w-full bg-deepNavy/60 rounded-xl mb-4 p-4 flex items-center justify-center">
                     <Image
                       src={rel.images[0]}
                       alt={rel.name}
                       fill
-                      className="object-contain p-2 group-hover:scale-105 transition-transform"
+                      className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-electricBlue uppercase block mb-1">
-                      {rel.categoryTitle}
+                    <span className="text-label text-[10px] block mb-1">
+                      {rel.tagline}
                     </span>
-                    <h4 className="text-base font-bold text-steelWhite group-hover:text-electricBlue transition">
+                    <h4 className="heading-md text-base font-bold text-steelWhite group-hover:text-electricBlue transition">
                       {rel.name}
                     </h4>
                   </div>

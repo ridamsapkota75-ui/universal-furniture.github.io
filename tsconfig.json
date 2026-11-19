@@ -21,6 +21,7 @@
   },
   "include": [
     "next-env.d.ts",
+    "src/types/three-jsx.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],

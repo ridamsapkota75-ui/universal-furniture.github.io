@@ -65,15 +65,15 @@ export default function NavBar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-deepNavy/95 backdrop-blur-md border-b border-electricBlue/20 shadow-xl py-3'
+          ? 'bg-deepNavy/95 backdrop-blur-xl border-b border-electricBlue/15 shadow-card-strong py-3'
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-electricBlue/40 bg-darkBlue shadow-md flex items-center justify-center p-0.5 group-hover:border-electricBlue transition">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-electricBlue/40 bg-darkBlue/80 shadow-md flex items-center justify-center p-0.5 group-hover:border-electricBlue transition backdrop-blur-sm">
               <Image
                 src="/images/logo/ufi-logo.png"
                 alt="Universal Furniture Industries"
@@ -84,10 +84,10 @@ export default function NavBar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-steelWhite group-hover:text-electricBlue transition">
+              <span className="font-display font-bold tracking-tight text-steelWhite group-hover:text-electricBlue transition text-lg sm:text-xl">
                 UNIVERSAL FURNITURE
               </span>
-              <span className="text-[10px] font-mono tracking-widest text-metallicSilver/70 uppercase">
+              <span className="text-caption font-mono tracking-widest text-metallicSilver/60 uppercase">
                 INDUSTRIES • CHITWAN
               </span>
             </div>
@@ -97,22 +97,14 @@ export default function NavBar() {
           <nav className="hidden lg:flex items-center space-x-8">
             <Link
               href="/"
-              className={`text-sm font-medium tracking-wide transition ${
-                isActive('/') && router.pathname === '/'
-                  ? 'text-electricBlue font-semibold'
-                  : 'text-metallicSilver hover:text-iceBlue'
-              }`}
+              className={`nav-link ${isActive('/') && router.pathname === '/' ? 'nav-link-active' : ''}`}
             >
               Home
             </Link>
 
             <Link
               href="/about"
-              className={`text-sm font-medium tracking-wide transition ${
-                isActive('/about')
-                  ? 'text-electricBlue font-semibold'
-                  : 'text-metallicSilver hover:text-iceBlue'
-              }`}
+              className={`nav-link ${isActive('/about') ? 'nav-link-active' : ''}`}
             >
               About
             </Link>
@@ -125,10 +117,8 @@ export default function NavBar() {
             >
               <button
                 type="button"
-                className={`flex items-center space-x-1 text-sm font-medium tracking-wide transition ${
-                  isActive('/products')
-                    ? 'text-electricBlue font-semibold'
-                    : 'text-metallicSilver hover:text-iceBlue'
+                className={`flex items-center space-x-1 text-sm font-medium tracking-wide transition nav-link ${
+                  isActive('/products') ? 'nav-link-active' : ''
                 }`}
                 aria-expanded={dropdownOpen}
               >
@@ -147,9 +137,9 @@ export default function NavBar() {
 
               {/* Mega Menu Dropdown */}
               {dropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[460px]">
-                  <div className="bg-darkBlue/95 border border-electricBlue/30 rounded-2xl p-4 shadow-2xl backdrop-blur-xl grid gap-2">
-                    <div className="px-3 py-1.5 border-b border-electricBlue/10 flex items-center justify-between text-[11px] font-mono text-metallicSilver/70 uppercase tracking-wider">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[460px] animate-fade-in-up">
+                  <div className="card-strong p-4 shadow-card-strong grid gap-2">
+                    <div className="px-3 py-1.5 border-b border-electricBlue/10 flex items-center justify-between text-caption font-mono text-metallicSilver/60 uppercase tracking-wider">
                       <span>Manufactured Categories</span>
                       <span className="text-electricBlue">9-Step Treated Steel</span>
                     </div>
@@ -158,19 +148,19 @@ export default function NavBar() {
                       <Link
                         key={cat.href}
                         href={cat.href}
-                        className="group flex items-start space-x-3 p-3 rounded-xl hover:bg-deepNavy/80 border border-transparent hover:border-electricBlue/30 transition"
+                        className="group flex items-start space-x-3 p-3 rounded-xl hover:bg-deepNavy/60 border border-transparent hover:border-electricBlue/25 transition"
                       >
                         <div className="w-2 h-2 mt-1.5 rounded-full bg-electricBlue/60 group-hover:bg-electricBlue transition" />
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
-                            <span className="text-sm font-semibold text-iceBlue group-hover:text-electricBlue transition">
+                            <span className="text-sm font-semibold text-steelWhite group-hover:text-electricBlue transition">
                               {cat.name}
                             </span>
-                            <span className="text-[10px] font-mono uppercase bg-deepNavy px-2 py-0.5 rounded text-metallicSilver border border-electricBlue/20">
+                            <span className="text-caption font-mono uppercase bg-deepNavy px-2 py-0.5 rounded text-metallicSilver border border-electricBlue/15">
                               {cat.tag}
                             </span>
                           </div>
-                          <p className="text-xs text-metallicSilver/80 mt-0.5 leading-snug">
+                          <p className="text-body-sm text-metallicSilver/70 mt-0.5 leading-snug">
                             {cat.desc}
                           </p>
                         </div>
@@ -183,33 +173,21 @@ export default function NavBar() {
 
             <Link
               href="/manufacturing"
-              className={`text-sm font-medium tracking-wide transition ${
-                isActive('/manufacturing')
-                  ? 'text-electricBlue font-semibold'
-                  : 'text-metallicSilver hover:text-iceBlue'
-              }`}
+              className={`nav-link ${isActive('/manufacturing') ? 'nav-link-active' : ''}`}
             >
               Manufacturing
             </Link>
 
             <Link
               href="/projects"
-              className={`text-sm font-medium tracking-wide transition ${
-                isActive('/projects')
-                  ? 'text-electricBlue font-semibold'
-                  : 'text-metallicSilver hover:text-iceBlue'
-              }`}
+              className={`nav-link ${isActive('/projects') ? 'nav-link-active' : ''}`}
             >
               Projects
             </Link>
 
             <Link
               href="/contact"
-              className={`text-sm font-medium tracking-wide transition ${
-                isActive('/contact')
-                  ? 'text-electricBlue font-semibold'
-                  : 'text-metallicSilver hover:text-iceBlue'
-              }`}
+              className={`nav-link ${isActive('/contact') ? 'nav-link-active' : ''}`}
             >
               Contact
             </Link>
@@ -222,17 +200,17 @@ export default function NavBar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Follow UFI on Facebook (opens in new tab)"
-              className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-darkBlue/80 hover:bg-[#1877F2] border border-electricBlue/30 hover:border-[#1877F2] text-iceBlue hover:text-white transition-all duration-300 shadow-md group"
+              className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-darkBlue/80 hover:bg-[#1877F2] border border-electricBlue/25 hover:border-[#1877F2] text-iceBlue hover:text-white transition-all duration-300 shadow-md group"
             >
               <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
                 <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
               </svg>
-              <span className="text-xs font-medium tracking-wide">Follow Us</span>
+              <span className="text-caption font-medium tracking-wide">Follow Us</span>
             </a>
 
             <Link
               href="/contact"
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-electricBlue to-royalBlue hover:from-royalBlue hover:to-electricBlue text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-electricBlue/25 hover:shadow-electricBlue/40 transition duration-300 transform hover:-translate-y-0.5"
+              className="btn-primary-sm"
             >
               Get a Quote
             </Link>
@@ -243,7 +221,7 @@ export default function NavBar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-metallicSilver hover:text-white hover:bg-darkBlue focus:outline-none"
+              className="p-2 rounded-lg text-metallicSilver hover:text-white hover:bg-darkBlue/50 focus:outline-none focus:ring-2 focus:ring-electricBlue focus:ring-offset-2 focus:ring-offset-deepNavy"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
@@ -261,30 +239,30 @@ export default function NavBar() {
 
         {/* Mobile Navigation Panel */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 px-3 bg-darkBlue/95 border border-electricBlue/30 rounded-2xl shadow-2xl backdrop-blur-xl">
+          <div className="lg:hidden mt-4 py-4 px-3 card-strong rounded-card-xl shadow-card-strong backdrop-blur-xl animate-fade-in-up">
             <div className="space-y-1">
               <Link
                 href="/"
-                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy"
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy/60"
               >
                 Home
               </Link>
               <Link
                 href="/about"
-                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy"
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy/60"
               >
                 About UFI
               </Link>
 
               <div className="py-2 border-y border-electricBlue/10 my-2">
-                <span className="px-3 text-xs font-mono uppercase tracking-wider text-metallicSilver/60 block mb-1">
+                <span className="px-3 text-caption font-mono uppercase tracking-wider text-metallicSilver/50 block mb-1">
                   Product Collections
                 </span>
                 {categories.map((c) => (
                   <Link
                     key={c.href}
                     href={c.href}
-                    className="block px-3 py-2 text-sm text-metallicSilver hover:text-white hover:bg-deepNavy rounded-lg"
+                    className="block px-3 py-2 text-sm text-metallicSilver hover:text-white hover:bg-deepNavy/60 rounded-lg"
                   >
                     {c.name}
                   </Link>
@@ -293,19 +271,19 @@ export default function NavBar() {
 
               <Link
                 href="/manufacturing"
-                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy"
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy/60"
               >
                 9-Step Manufacturing
               </Link>
               <Link
                 href="/projects"
-                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy"
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy/60"
               >
-                Projects & Spaces
+                Projects & Sectors
               </Link>
               <Link
                 href="/contact"
-                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy"
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-iceBlue hover:bg-deepNavy/60"
               >
                 Contact & Inquiry
               </Link>
@@ -315,7 +293,7 @@ export default function NavBar() {
                   href="https://www.facebook.com/ufichitwan/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-deepNavy border border-electricBlue/30 text-iceBlue hover:text-white text-xs font-semibold"
+                  className="flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-deepNavy border border-electricBlue/20 text-iceBlue hover:text-white text-caption font-semibold"
                 >
                   <svg className="w-4 h-4 fill-current text-electricBlue" viewBox="0 0 24 24">
                     <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
@@ -324,7 +302,7 @@ export default function NavBar() {
                 </a>
                 <Link
                   href="/contact"
-                  className="block w-full text-center py-3 rounded-xl bg-electricBlue text-white font-semibold text-sm shadow-md"
+                  className="block w-full text-center btn-primary-sm"
                 >
                   Request a Quote
                 </Link>

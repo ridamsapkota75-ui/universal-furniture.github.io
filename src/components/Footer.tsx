@@ -8,13 +8,13 @@ export default function Footer() {
     setYear(new Date().getFullYear());
   }, []);
   return (
-    <footer className="bg-deepNavy border-t border-electricBlue/20 text-metallicSilver pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-electricBlue/15">
+    <footer className="bg-industrial-deep border-t border-electricBlue/15 text-metallicSilver section-padding">
+      <div className="section-container">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-electricBlue/10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden border border-electricBlue/40 bg-darkBlue flex items-center justify-center p-0.5">
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-electricBlue/40 bg-darkBlue/80 flex items-center justify-center p-0.5">
                 <Image
                   src="/images/logo/ufi-logo.png"
                   alt="UFI Chitwan"
@@ -24,25 +24,25 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <span className="text-lg font-bold text-steelWhite tracking-tight">
+                <span className="font-display font-bold text-steelWhite tracking-tight text-lg sm:text-xl">
                   UNIVERSAL FURNITURE INDUSTRIES
                 </span>
-                <p className="text-[11px] font-mono uppercase tracking-widest text-electricBlue">
+                <p className="text-caption font-mono uppercase tracking-widest text-electricBlue">
                   PRECISION METAL FURNITURE • SINCE 1990
                 </p>
               </div>
             </Link>
 
-            <p className="text-sm text-metallicSilver/80 max-w-sm leading-relaxed">
+            <p className="text-body-sm text-metallicSilver/70 max-w-sm leading-relaxed">
               Precision metal furniture manufacturing facility based in Chitwan, Nepal.
               Serving departmental marts, schools, hospitals, corporate workspaces, and homes across Nepal with signature 9-step chemical powder coating.
             </p>
 
-            <div className="pt-2 flex items-center space-x-3">
-              <span className="px-2.5 py-1 rounded bg-darkBlue text-xs font-mono text-iceBlue border border-electricBlue/20">
+            <div className="pt-2 flex items-center space-x-2 flex-wrap">
+              <span className="px-2.5 py-1 rounded-lg bg-industrial-card text-caption font-mono text-iceBlue border border-electricBlue/15">
                 Chitwan, Nepal
               </span>
-              <span className="px-2.5 py-1 rounded bg-darkBlue text-xs font-mono text-iceBlue border border-electricBlue/20">
+              <span className="px-2.5 py-1 rounded-lg bg-industrial-card text-caption font-mono text-iceBlue border border-electricBlue/15">
                 Est. 1990
               </span>
             </div>
@@ -50,10 +50,10 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-iceBlue font-bold mb-4">
+            <h4 className="text-label mb-4">
               Explore
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2.5 text-body-sm">
               <li>
                 <Link href="/" className="hover:text-electricBlue transition">
                   Home
@@ -84,10 +84,10 @@ export default function Footer() {
 
           {/* Product Categories */}
           <div>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-iceBlue font-bold mb-4">
+            <h4 className="text-label mb-4">
               Sectors
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2.5 text-body-sm">
               <li>
                 <Link href="/products/store" className="hover:text-electricBlue transition">
                   Retail Systems
@@ -118,17 +118,17 @@ export default function Footer() {
 
           {/* Verified Contact Details */}
           <div>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-iceBlue font-bold mb-4">
+            <h4 className="text-label mb-4">
               Factory & Office
             </h4>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-body-sm">
               <p className="leading-snug">
                 Bharatpur-07, Srijana Tole,<br />
                 Chitwan, Bagmati Province, Nepal
               </p>
               <p>
-                <span className="block text-xs font-mono text-metallicSilver/60">Phone:</span>
-                <a href="tel:+9779855053857" className="text-iceBlue hover:text-electricBlue font-semibold transition">
+                <span className="text-label">Phone:</span>
+                <a href="tel:+9779855053857" className="text-iceBlue hover:text-electricBlue font-semibold transition mt-1 block">
                   +977-9855053857
                 </a>
               </p>
@@ -140,7 +140,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Direct WhatsApp Chat with UFI"
-                  className="inline-flex items-center space-x-1.5 text-xs font-medium text-white bg-green-700/80 hover:bg-green-600 px-3 py-1.5 rounded-lg border border-green-500/30 transition shadow-sm"
+                  className="inline-flex items-center space-x-1.5 text-caption font-medium text-white bg-green-700/80 hover:bg-green-600 px-3 py-1.5 rounded-lg border border-green-500/25 transition shadow-sm"
                 >
                   <span>WhatsApp</span>
                 </a>
@@ -150,7 +150,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit official UFI Facebook page (opens in new tab)"
-                  className="inline-flex items-center space-x-1.5 text-xs font-medium text-white bg-[#1877F2]/90 hover:bg-[#1877F2] px-3 py-1.5 rounded-lg border border-blue-400/30 transition shadow-sm group"
+                  className="inline-flex items-center space-x-1.5 text-caption font-medium text-white bg-[#1877F2]/90 hover:bg-[#1877F2] px-3 py-1.5 rounded-lg border border-blue-400/25 transition shadow-sm group"
                 >
                   <svg className="w-3.5 h-3.5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
@@ -163,12 +163,12 @@ export default function Footer() {
         </div>
 
         {/* Stay Connected Social Block */}
-        <div className="pt-10 pb-8 border-t border-electricBlue/15 mt-10">
+        <div className="pt-10 pb-8 border-t border-electricBlue/10 mt-10">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-mono uppercase tracking-widest text-electricBlue font-semibold block mb-2">
+            <span className="text-label block mb-2">
               STAY CONNECTED WITH UFI
             </span>
-            <p className="text-sm text-metallicSilver/80 mb-6">
+            <p className="text-body-sm text-metallicSilver/70 mb-6">
               Follow our latest products, projects and company updates.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -177,29 +177,30 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow UFI on Facebook (opens in new tab)"
-                className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-[#1877F2] hover:bg-[#166FE5] text-white font-semibold text-xs tracking-wider uppercase transition-all duration-300 shadow-lg shadow-blue-900/30 hover:-translate-y-0.5 group"
+                className="inline-flex items-center space-x-3 px-7 py-3.5 rounded-xl bg-[#1877F2] hover:bg-[#166FE5] text-white font-semibold text-sm tracking-wide transition-all duration-300 shadow-xl shadow-blue-900/30 hover:shadow-blue-800/40 hover:-translate-y-0.5 group"
               >
-                <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
                 </svg>
                 <span>Follow UFI on Facebook</span>
               </a>
+
               <a
                 href="https://wa.me/9779855053857"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-green-700 hover:bg-green-600 text-white font-semibold text-xs tracking-wider uppercase transition shadow-md"
+                className="inline-flex items-center space-x-3 px-7 py-3.5 rounded-xl bg-green-700 hover:bg-green-600 text-white font-semibold text-sm tracking-wide transition shadow-xl shadow-green-900/30 hover:-translate-y-0.5"
               >
-                <span>WhatsApp Chat</span>
+                <span>WhatsApp: +977-9855053857</span>
               </a>
             </div>
           </div>
         </div>
 
         {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-metallicSilver/60 gap-4">
-          <p>© {new Date().getFullYear()} Universal Furniture Industries (UFI). All rights reserved.</p>
-          <div className="flex items-center space-x-6">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-caption text-metallicSilver/50 gap-4">
+          <p>© {year} Universal Furniture Industries (UFI). All rights reserved.</p>
+          <div className="flex items-center space-x-5 flex-wrap">
             <a
               href="https://ufichitwan.com/"
               target="_blank"
@@ -212,14 +213,14 @@ export default function Footer() {
               href="https://www.facebook.com/ufichitwan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-1 hover:text-iceBlue transition group text-metallicSilver/80"
+              className="inline-flex items-center space-x-1 hover:text-iceBlue transition group text-metallicSilver/70"
             >
               <svg className="w-3.5 h-3.5 fill-current text-[#1877F2] group-hover:scale-110 transition-transform" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
               </svg>
               <span>Facebook Official</span>
             </a>
-            <span className="text-metallicSilver/40">Chitwan, Nepal</span>
+            <span className="text-metallicSilver/30">Chitwan, Nepal</span>
           </div>
         </div>
       </div>

@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
@@ -16,7 +20,7 @@
     "emailjs-com": "3.2.0",
     "framer-motion": "11.5.5",
     "gsap": "3.12.5",
-    "next": "14.2.0",
+    "next": "^15.5.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.52.2",
@@ -24,12 +28,18 @@
     "typescript": "5.5.4"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.17",
     "@types/node": "20.14.10",
     "@types/react": "18.3.3",
     "autoprefixer": "^10.6.2",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.0",
+    "eslint-config-next": "^15.5.29",
     "postcss": "^8.5.33",
-    "tailwindcss": "^3.4.19"
+    "tailwindcss": "^3.4.19",
+    "wrangler": "^4.165.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "workerd@1.20261118.1": true
   }
 }

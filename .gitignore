@@ -6,3 +6,11 @@ out
 __pycache__/
 *.py[cod]
 audit_temp.json
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
